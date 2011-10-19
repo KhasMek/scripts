@@ -1,0 +1,52 @@
+#!/bin/sh
+# This is a script to assist in sshing my lazy ass around.
+# Use it if you want, you will modify the custom options in the first few
+# lines of the script to whatever you want, then call it after ./dev
+# to specify where you want to ssh to. Faily straight forward.
+# If you want to add/subtract options, copypasta that shit and add another
+# call.
+# -KhasMek
+#
+# H{number} = Host, this is where you'll add everything that comes after
+# ssh (eg, -p 1234 urmom@127.0.0.1 to perform 'ssh -P 1234 urmom@127.0.0.1)
+#
+# C{number} = Call, use this to call what host you want to ssh to via command
+# line (eg, ./dev example1)
+#
+# This script is best suited for being in a directory that is added to $PATH
+
+H1="-p 1234 urmom@127.0.0.1"
+C1=example1
+H2=root@192.168.1.2
+C2=example2
+H3=192.168.1.3
+C3=example4
+H4=55.55.55.55
+C4=example5
+
+call=${1}
+
+if [ "$call" = "$C1" ]; then
+	echo "Opening a secure shell to $C1"
+	ssh $H1
+else
+	if [ "$call" = "$C2" ]; then
+		echo "Opening a secure shell to $C2"
+		ssh $H2
+	else
+		if [ "$call" = "$C3" ]; then
+			echo "Opening a secure shell to $C3"
+			ssh $H3
+		else
+			if [ "$call" = "$C4" ]; then
+				echo "Opening a secure shell to $C4"
+				ssh $H4
+			else
+				if [ "$call" != "$C1" ] && [ "$call" != "$C2" ] && [ "$call" != "$C3" ] && [ "$call" != "$C4" ]; then
+					echo "Invalid host specified, exiting"
+					exit
+				fi
+			fi
+		fi
+	fi
+fi
