@@ -67,7 +67,8 @@ fi
 if ! test -x ~/bin/repo ; then
         echo "[}----- Downloading repo binary -----{]"
 	rm -f ~/bin/repo
-	curl https://android.git.kernel.org/repo > ~/bin/repo
+	#curl https://android.git.kernel.org/repo > ~/bin/repo
+	curl "http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo" > ~/bin/repo
 	chmod a+x ~/bin/repo
 fi
 
