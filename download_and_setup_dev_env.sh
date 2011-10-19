@@ -41,6 +41,7 @@
 Manifest=${1}
 Working_Directory=""
 Manifest_Branch=""
+repo=http://dl-ssl.google.com/dl/googlesource.com/git-repo/repo
 
 if [ "$Working_Directory" = "" ]; then
         echo "[}-!-!- You have not specified a working directory, defaults will be used (Android) -!-!-{]"
@@ -67,8 +68,7 @@ fi
 if ! test -x ~/bin/repo ; then
         echo "[}----- Downloading repo binary -----{]"
 	rm -f ~/bin/repo
-	#curl https://android.git.kernel.org/repo > ~/bin/repo
-	curl "http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo" > ~/bin/repo
+	curl "$repo" > ~/bin/repo
 	chmod a+x ~/bin/repo
 fi
 
